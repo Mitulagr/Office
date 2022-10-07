@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Office</string>
+    <string name="admin_username">admin</string>
+    <string name="admin_password">admin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
