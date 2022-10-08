@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#F44336"
-                    android:layout_marginVertical="5dp"
+                    android:layout_marginVertical="10dp"
                     android:drawableLeft="@drawable/ic_baseline_add_24"
                     android:text="Add Task"
                     android:textSize="12sp"

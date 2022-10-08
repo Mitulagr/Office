@@ -158,6 +158,18 @@ public class DBHandler extends SQLiteOpenHelper {
         return c.getCount();
     }
 
+    public boolean EmailExist(String email){
+        String countQuery = "SELECT "+TE_email+" FROM "+TABLE_Employee;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(countQuery,null);
+        if (c!=null && c.moveToFirst()) {
+            do {
+                if (email.equals(c.getString(c.getColumnIndexOrThrow(TE_email)))) return true;
+            } while (c.moveToNext());
+        }
+        return false;
+    }
+
     public int updateEmployee(Employee employee) {
         SQLiteDatabase db = this.getWritableDatabase();
 

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Admin.class));
         }
         if(sp.getInt("Current User", 0)==2){
-            startActivity(new Intent(MainActivity.this, Employee.class));
+            startActivity(new Intent(MainActivity.this, Emp.class));
         }
 
         // Automatic Log In
@@ -75,9 +75,10 @@ public class MainActivity extends AppCompatActivity {
                             exist = true;
                             if(Employees.get(i).pass.equals(password.getText().toString())){
                                 editor.putInt("Current User", 2);
+                                editor.commit();
                                 editor.putString("Employee", email);
                                 editor.commit();
-                                startActivity(new Intent(MainActivity.this, Employee.class));
+                                startActivity(new Intent(MainActivity.this, Emp.class));
                             }
                             else {
                                 // Wrong Employee Password
