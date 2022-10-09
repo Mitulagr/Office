@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="hour">80dp</dimen>
+    <dimen name="min">50dp</dimen>
+    <dimen name="hourd">28dp</dimen>
+    <dimen name="mind">20dp</dimen>
+</resources>

@@ -210,6 +210,13 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int getTasksCount(){
+        String countQuery = "SELECT "+TT_ID+" FROM "+TABLE_Task;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(countQuery,null);
+        return c.getCount();
+    }
+
     public int[] getDataToday(String email, String date) {
         int[] dataList = new int[]{0,0,0};
 

@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/am.xml" value="0.295" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/bagc.xml" value="0.295" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/bagh.xml" value="0.295" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/bagm.xml" value="0.295" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/pm.xml" value="0.295" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/roundedb.xml" value="0.2985" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/roundedg.xml" value="0.2985" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/activity_admin.xml" value="0.358695652173913" />
@@ -11,11 +16,14 @@
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/activity_page_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/addemployee.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/addtask.xml" value="0.33" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/clock.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/editemp.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/fragment_emp_profile.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/fragment_emp_task.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/fragment_stats.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/menu/bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/menu/task_menu.xml" value="0.3625" />
       </map>
     </option>
   </component>

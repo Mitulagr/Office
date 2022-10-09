@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tt1"
+        android:title="Work" />
+
+    <item
+        android:id="@+id/tt2"
+        android:title="Meeting" />
+
+    <item
+        android:id="@+id/tt3"
+        android:title="Break" />
+
+</menu>
