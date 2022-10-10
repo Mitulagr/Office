@@ -44,6 +44,7 @@ public class EmpTask extends Fragment implements DatePickerDialog.OnDateSetListe
     private DBHandler db;
     private SharedPreferences sp;
     int Join[];
+    String DTod;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -139,6 +140,7 @@ public class EmpTask extends Fragment implements DatePickerDialog.OnDateSetListe
         Join[1] = Calendar.getInstance().get(Calendar.MONTH)+1;
         Join[2] = Calendar.getInstance().get(Calendar.YEAR);
         TDate.setText(String.format("%04d-%02d-%02d",Join[2],Join[1],Join[0]));
+        DTod = TDate.getText().toString();
 
         int hr = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         boolean am = true;
@@ -208,6 +210,7 @@ public class EmpTask extends Fragment implements DatePickerDialog.OnDateSetListe
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         String date = String.format("%04d-%02d-%02d", i,i1+1,i2);
+        if(!check(date)) return;
         temp.setText(date);
         Join[0] = i2;
         Join[1] = i1+1;
@@ -218,5 +221,21 @@ public class EmpTask extends Fragment implements DatePickerDialog.OnDateSetListe
     @Override
     public CreationExtras getDefaultViewModelCreationExtras() {
         return super.getDefaultViewModelCreationExtras();
+    }
+
+    public boolean check(String DT){
+        int y1 = Integer.parseInt(DT.substring(0,4));
+        int y2 = Integer.parseInt(DTod.substring(0,4));
+        int m1 = Integer.parseInt(DT.substring(5,7));
+        int m2 = Integer.parseInt(DTod.substring(5,7));
+        int d1 = Integer.parseInt(DT.substring(8));
+        int d2 = Integer.parseInt(DTod.substring(8));
+        if(y1<y2) return true;
+        if(y1>y2) return false;
+        if(m1<m2) return true;
+        if(m1>m2) return false;
+        if(d1<d2) return true;
+        if(d1>d2) return false;
+        return true;
     }
 }

@@ -3,6 +3,7 @@ package com.mitulagr.office;
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.viewmodel.CreationExtras;
 
 import android.preference.PreferenceManager;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +71,7 @@ public class StatsFragment extends Fragment implements DatePickerDialog.OnDateSe
     int Join[];
     private String types [] = {"Work","Meeting","Break"};
     //private AnyChartView anyChartView;
-    private PieChart pieChart;
+    private PieChart pieChart1,pieChart2;
     private BarChart barChart;
     private String email;
 
@@ -100,10 +102,13 @@ public class StatsFragment extends Fragment implements DatePickerDialog.OnDateSe
 
         //anyChartView = rootView.findViewById(R.id.piechart);
 
-        pieChart = rootView.findViewById(R.id.piechart);
+        pieChart1 = rootView.findViewById(R.id.piechart1);
+        pieChart2 = rootView.findViewById(R.id.piechart2);
 
-        setupPieChart();
-        loadPieData();
+        setupPieChart(pieChart1,true);
+        setupPieChart(pieChart2,false);
+        loadPieData(pieChart1,true);
+        loadPieData(pieChart2,false);
 
         barChart = rootView.findViewById(R.id.barchart);
 
@@ -113,21 +118,29 @@ public class StatsFragment extends Fragment implements DatePickerDialog.OnDateSe
         return rootView;
     }
 
-    public void setupPieChart(){
+    public void setupPieChart(PieChart pieChart, Boolean tod){
         pieChart.setDrawHoleEnabled(false);
         pieChart.setUsePercentValues(false);
-        pieChart.setEntryLabelTextSize(16);
+        pieChart.setEntryLabelTextSize(14);
         pieChart.setEntryLabelColor(Color.parseColor("#F1F7FF"));
-        pieChart.getDescription().setEnabled(false);
+        pieChart.getDescription().setEnabled(true);
+        if(tod) pieChart.getDescription().setXOffset(75);
+        else pieChart.getDescription().setXOffset(50);
+        pieChart.getDescription().setYOffset(-20);
+        pieChart.getDescription().setTextSize(18);
+        pieChart.setExtraBottomOffset(15f);
         pieChart.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        pieChart.getLegend().setTextSize(16);
+        pieChart.getLegend().setTextSize(14);
         pieChart.getLegend().setEnabled(false);
     }
 
-    public void loadPieData(){
+    public void loadPieData(PieChart pieChart, boolean tod){
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-        int vals[] = db.getDataToday(email,Sdate.getText().toString());
+        String d = Sdate.getText().toString();
+        if(!tod) d = getPrevDay(d,1);
+
+        int vals[] = db.getDataToday(email,d);
 
         boolean prob = false;
 
@@ -165,7 +178,10 @@ public class StatsFragment extends Fragment implements DatePickerDialog.OnDateSe
             });
         }
 
-        data.setValueTextSize(24f);
+        if(tod) pieChart.getDescription().setText("Today");
+        else pieChart.getDescription().setText("Yesterday");
+
+        data.setValueTextSize(20f);
         data.setValueTextColor(Color.BLACK);
 
         pieChart.setData(data);
@@ -226,9 +242,6 @@ public class StatsFragment extends Fragment implements DatePickerDialog.OnDateSe
             entries.add(new BarEntry(i,fvals));
         }
 
-        //entries.add(new PieEntry(0.2f,"M"));
-        //entries.add(new PieEntry(0.3f,"V"));
-
         ArrayList<Integer> colors = new ArrayList<>();
 
         int cli = 0;
@@ -243,15 +256,7 @@ public class StatsFragment extends Fragment implements DatePickerDialog.OnDateSe
 
         BarData data = new BarData(dataSet);
         data.setDrawValues(true);
-        //data.setValueFormatter(new PercentFormatter(pieChart));
         data.setValueFormatter(new DefaultValueFormatter(0));
-//        data.setValueFormatter(new ValueFormatter() {
-//            @Override
-//            public String getFormattedValue(float value) {
-//                //float vl = super.getFormattedValue(value);
-//                return String.valueOf((int) value)+" Min";
-//            }
-//        });
         data.setValueTextSize(8f);
         data.setValueTextColor(Color.BLACK);
 
@@ -297,7 +302,8 @@ public class StatsFragment extends Fragment implements DatePickerDialog.OnDateSe
         Join[0] = i2;
         Join[1] = i1+1;
         Join[2] = i;
-        loadPieData();
+        loadPieData(pieChart1,true);
+        loadPieData(pieChart2,false);
         loadBarData();
     }
 
