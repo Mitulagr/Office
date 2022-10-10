@@ -58,7 +58,7 @@
                 android:id="@+id/editTextTextPersonName9"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="90dp"
                 android:ems="10"
                 android:inputType="number"
                 android:textSize="20sp"

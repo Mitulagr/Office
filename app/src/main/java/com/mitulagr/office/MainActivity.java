@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Emp.class));
         }
 
-        // Automatic Log In
-        // Check if employee deactivated before its automatic login
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,10 +58,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else {
                             // Wrong Admin Password
+                            password.requestFocus();
+                            password.setError("Password Incorrect");
                         }
                     }
                     else{
                         // Admin Username doesn't exist
+                        log_id.requestFocus();
+                        log_id.setError("Username dosen't exist");
                     }
                 }
                 else{
@@ -73,7 +75,11 @@ public class MainActivity extends AppCompatActivity {
                     for(int i=0;i<Employees.size();i++){
                         if(Employees.get(i).email.equals(email)){
                             exist = true;
-                            if(Employees.get(i).pass.equals(password.getText().toString())){
+                            if(Employees.get(i).active==0){
+                                log_id.requestFocus();
+                                log_id.setError("Employee Deactivated");
+                            }
+                            else if(Employees.get(i).pass.equals(password.getText().toString())){
                                 editor.putInt("Current User", 2);
                                 editor.commit();
                                 editor.putString("Employee", email);
@@ -82,12 +88,16 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else {
                                 // Wrong Employee Password
+                                password.requestFocus();
+                                password.setError("Password Incorrect");
                             }
                             break;
                         }
                     }
                     if(!exist){
                         // Employee with email dosent exist
+                        log_id.requestFocus();
+                        log_id.setError("Employee with this email dosen't exist");
                     }
                 }
             }

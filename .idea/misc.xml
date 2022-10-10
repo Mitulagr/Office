@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/bagm.xml" value="0.295" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/pm.xml" value="0.295" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/roundedb.xml" value="0.2985" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/roundede.xml" value="0.227" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/drawable/roundedg.xml" value="0.2985" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/activity_admin.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/activity_admin_emp.xml" value="0.33" />
@@ -18,10 +19,11 @@
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/addemployee.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/addtask.xml" value="0.33" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/clock.xml" value="0.35280797101449274" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/design_emp.xml" value="0.2296195652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/editemp.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/fragment_emp_profile.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/fragment_emp_task.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/fragment_stats.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/layout/fragment_stats.xml" value="0.264" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/menu/bottom_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/menu/task_menu.xml" value="0.3625" />
         <entry key="..\:/Users/Mitul Agrawal/AndroidStudioProjects/Office/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2995" />

@@ -1,16 +1,24 @@
 package com.mitulagr.office;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +33,7 @@ public class Admin extends AppCompatActivity implements DatePickerDialog.OnDateS
     private EditText search;
     private RecyclerView Emps;
     private DBHandler db;
+    private Adapter_Emp ade;
     int Join[];
 
     @Override
@@ -54,6 +63,56 @@ public class Admin extends AppCompatActivity implements DatePickerDialog.OnDateS
             @Override
             public void onClick(View view) {
                 addEmployee();
+            }
+        });
+
+        Emps.setLayoutManager(new LinearLayoutManager(this));
+
+        int tod[] = new int[]{0,0,0};
+        tod[0] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        tod[1] = Calendar.getInstance().get(Calendar.MONTH)+1;
+        tod[2] = Calendar.getInstance().get(Calendar.YEAR);
+
+        ade = new Adapter_Emp(this,String.format("%04d-%02d-%02d",tod[2],tod[1],tod[0]));
+
+        Emps.setAdapter(ade);
+
+        ActivityResultLauncher<Intent> startActivityForResult = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        ade.local = db.getAllEmployees();
+                        ade.filter();
+                        ade.notifyDataSetChanged();
+                    }
+                });
+
+        ade.setOnItemClickListener(new Adapter_Emp.onRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClickListener(View view, int position) {
+                editor.putString("Employee", ade.disp.get(position).email);
+                editor.commit();
+                //startActivity(new Intent(Admin.this, AdminEmp.class));
+                startActivityForResult.launch(new Intent(Admin.this, AdminEmp.class));
+            }
+        });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                ade.qry = search.getText().toString();
+                ade.filter();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
@@ -110,7 +169,8 @@ public class Admin extends AppCompatActivity implements DatePickerDialog.OnDateS
 
                 db.addEmployee(employee);
 
-                // Refresh Adapter
+                ade.local = db.getAllEmployees();
+                ade.filter();
 
                 curd.dismiss();
             }

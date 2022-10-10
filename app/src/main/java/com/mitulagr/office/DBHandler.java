@@ -134,9 +134,9 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery(selectQuery,null);
 
-        Employee employee = new Employee();
         if (c!=null && c.moveToFirst()){
             do {
+                Employee employee = new Employee();
                 employee.email = c.getString(c.getColumnIndexOrThrow(TE_email));
                 employee.name = c.getString(c.getColumnIndexOrThrow(TE_name));
                 employee.number = c.getString(c.getColumnIndexOrThrow(TE_number));
@@ -218,15 +218,15 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     public int[] getDataToday(String email, String date) {
-        int[] dataList = new int[]{0,0,0};
+        int[] dataList = {0,0,0};
+
 
         String selectQuery = "SELECT "+TT_type+","+TT_mins+" FROM "+TABLE_Task
-                +" WHERE "+TT_email+" = "+email+" AND "+TT_date+" = "+date;
+                +" WHERE "+TT_email+" = \""+email+"\" AND "+TT_date+" = \""+date+"\"";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery(selectQuery,null);
 
-        Employee employee = new Employee();
         if (c!=null && c.moveToFirst()){
             do {
                 dataList[c.getInt(c.getColumnIndexOrThrow(TT_type))] +=
